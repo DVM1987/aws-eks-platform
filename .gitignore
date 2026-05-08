@@ -1,0 +1,90 @@
+# ============================================================
+# Terraform
+# ============================================================
+# Local cache (provider binaries, modules, init metadata)
+**/.terraform/
+# State files — never commit (chứa metadata + resource ID + có thể có account ID)
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+# Plan output binary (chứa giá trị plan có thể nhạy cảm)
+*.tfplan
+tfplan
+**/tfplan
+**/tfplan.*
+# Crash log
+crash.log
+crash.*.log
+# KEEP committed (HashiCorp best practice cho reproducible build):
+#   .terraform.lock.hcl
+
+# ============================================================
+# Sensitive credentials (KHÔNG bao giờ push)
+# ============================================================
+# Jenkins config: chứa admin password plaintext + IAM policy/trust JSON với account ID
+10-cicd/jenkins/
+
+# Nested git repo (10-cicd/ là mirror của https://github.com/DVM1987/muoidv-sample-app)
+10-cicd/.git/
+
+# Generic env/secret patterns
+.env
+.env.*
+*.pem
+*.key
+id_rsa
+id_rsa.*
+*.pfx
+credentials
+credentials.json
+
+# AWS CLI cache (đôi khi sysadmin bỏ trong project folder nhầm)
+.aws/
+
+# ============================================================
+# OS / IDE
+# ============================================================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.iml
+*.sublime-workspace
+*.sublime-project
+
+# ============================================================
+# Node.js (10-cicd/app/)
+# ============================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm/
+.yarn/
+.pnp.*
+package-lock.json.bak
+
+# ============================================================
+# Build / Logs / Temp
+# ============================================================
+*.log
+logs/
+tmp/
+temp/
+dist/
+build/
+out/
+
+# ============================================================
+# Local-only artifacts (lab personal, recruiter không cần)
+# ============================================================
+# Helm chart default values dump (helm show values output, không phải code mình viết)
+**/jenkins-default-values.yaml
+**/postgresql-default-values.yaml
+**/pgadmin-default-values.yaml
+# Backup files
+*.bak
+*.orig
